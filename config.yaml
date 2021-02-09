@@ -1,0 +1,5 @@
+ACCESS: ""
+GIN_MODE: "release"
+ADDR: ""
+PORT: ""
+DATABASE_URL: ""
