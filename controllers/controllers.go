@@ -33,7 +33,7 @@ func Get(context *gin.Context) {
 		return
 	}
 	// Rows where cols: 'name' and 'id' contain the provided term.
-	result := db.DB.Where("instr(name, ?) > 0 OR instr(ID, ?) > 0", searchTerm, searchTerm).Find(&currencyList)
+	result := db.DB.Where("name LIKE '%' || ? || '%' OR ID LIKE '%' || ? || '%'", searchTerm, searchTerm).Find(&currencyList)
 	if result.Error != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"error": result.Error.Error()})
 		return

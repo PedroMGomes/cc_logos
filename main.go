@@ -74,8 +74,16 @@ func main() {
 		builder.WriteString(config.Port)
 	}
 	// addr := config.Addr + ":" + config.Port
-	err = r.Run(builder.String())
-	if err != nil {
-		panic("Failed to start the server.")
+	if len(builder.String()) > 0 {
+		err = r.Run(builder.String())
+		if err != nil {
+			panic("Failed to start the server.")
+		}
+	} else {
+		// invalid empty string as param.
+		err = r.Run()
+		if err != nil {
+			panic("Failed to start the server.")
+		}
 	}
 }
